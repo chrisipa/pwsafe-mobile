@@ -1,3 +1,27 @@
 .separator {
 	color: #F9F9F9;
 }
+
+.edited {
+	background-color: #ffc082 !important;	
+}
+
+#showhide {
+	background-color: #bbffa0 !important;
+}
+
+#generate {
+	background-color: #fffca9 !important;
+}
+
+#create {
+	background-color: #ffc082 !important;
+}
+
+#change {
+	background-color: #ffc082 !important;
+}
+
+#deactivate {
+	background-color: #ff9797 !important;
+}

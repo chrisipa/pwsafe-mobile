@@ -175,6 +175,10 @@ PasswordSafe = (function () {
 					addPasswordEntry(password);
 				});
 
+				$(".editable").on("change", function() {
+					$(this).addClass("edited");
+				});
+				
 				$("#list").trigger("create");
 				$("#list").show();
 			});
@@ -209,6 +213,7 @@ PasswordSafe = (function () {
 		.append(
 			$("<input type='text' name='title' />")
 			.attr("id", "title-" + password.id)
+			.attr("class", "editable")
 			.attr("value", password.id == "new-entry" ? "" : password.title)
 		)
 		.append(
@@ -217,6 +222,7 @@ PasswordSafe = (function () {
 		.append(
 			$("<textarea name='notes'></textarea>")
 			.attr("id", "notes-" + password.id)
+			.attr("class", "editable")
 			.html(password.notes)
 		)
 		.append(
@@ -225,6 +231,7 @@ PasswordSafe = (function () {
 		.append(
 			$("<input type='text' name='username' />")
 			.attr("id", "username-" + password.id)
+			.attr("class", "editable")
 			.attr("value", password.username)
 		)
 		.append(
@@ -233,6 +240,7 @@ PasswordSafe = (function () {
 		.append(
 			$("<input type='text' name='password' />")
 			.attr("id", "password-" + password.id)
+			.attr("class", "editable")
 			.attr("value", password.id == "new-entry" ? "" : Settings.passwordDefaultValue)
 		)
 		.append(
@@ -246,6 +254,7 @@ PasswordSafe = (function () {
 				var id = $(this).attr("data-id");
 				var passwordValueId = "#password-" + id;
 				var passwordValue = $(passwordValueId).val();
+				$(passwordValueId).removeClass("edited");
 				
 				if (passwordValue == Settings.passwordDefaultValue) {
 					$.getJSON(Settings.rootUrl + "/passwords/" + id + "/currentValue", function(data) {
@@ -272,6 +281,7 @@ PasswordSafe = (function () {
 			
 			$.getJSON(Settings.rootUrl + "/password/generate", function(data) {
 				$("#password-" + id).val(data.generatedPassword);
+				$("#password-" + id).trigger("change");
 			});	
 		}))
 		.append(
@@ -359,6 +369,7 @@ PasswordSafe = (function () {
 						success: function(response) {
 							if (response.success) {
 								$("#entry-" + id).children(":first").html(data["title"]);
+								$("#entry-" + id).parent().find(".edited").removeClass("edited");
 								alert($("<div />").html($.i18n.prop("password.change.success.message")).text());
 							}
 							else {
