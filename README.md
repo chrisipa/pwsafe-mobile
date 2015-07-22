@@ -11,7 +11,7 @@ Features
 -------------
 * Web frontend optimized for smartphones and tablets
 * 2-factor authentication with google authenticator
-* Multi language support (i18n) 
+* Multi language support (i18n)
 
 Prerequisites
 -------------
@@ -21,7 +21,7 @@ Prerequisites
 
 Installation
 -------------
-* Download and extract the war file to webapps folder:
+* Download and extract the war file to web apps folder:
 ```
 cd /opt/tomcat/webapps
 wget https://raw.githubusercontent.com/chrisipa/pwsafe-mobile/master/public/pwsafe-mobile.war
