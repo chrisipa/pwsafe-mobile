@@ -3,7 +3,7 @@ pwsafe-mobile
 
 Overview
 -------------
-This is a alternative web frontend based on jquery mobile for the original webpasswordsafe created by Josh Drummond.
+This is a alternative web frontend based on JQuery Mobile for the original webpasswordsafe created by Josh Drummond.
 
 ![Screenshot](https://raw.githubusercontent.com/chrisipa/pwsafe-mobile/master/public/screenshot_login.png)
 
