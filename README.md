@@ -15,7 +15,7 @@ Features
 
 Prerequisites
 -------------
-* [Java 6](http://www.oracle.com/technetwork/java/javase/downloads/index.html) must be installed
+* [Java 6](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or higher must be installed
 * Web application server (e.g. tomcat) must be installed
 * [webpasswordsafe](https://github.com/chrisipa/webpasswordsafe) must be installed
 
