@@ -16,6 +16,7 @@
 		<script src="<c:url value="/static/jquery/jquery-1.9.1.min.js" />"></script>
 		<script src="<c:url value="/static/jquery/jquery.mobile-1.4.2.min.js" />"></script>
 		<script src="<c:url value="/static/jquery/jquery.i18n.properties.js" />"></script>
+		<script src="<c:url value="/static/jquery/jquery.textchange.min.js" />"></script>
 		<script src="<c:url value="/static/pwsafe/pwsafe.js" />"></script>
 		
 		<script type="text/javascript">

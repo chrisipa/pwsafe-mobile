@@ -175,7 +175,7 @@ PasswordSafe = (function () {
 					addPasswordEntry(password);
 				});
 
-				$(".editable").on("change", function() {
+				$(".editable").bind('textchange', function() {
 					$(this).addClass("edited");
 				});
 				
@@ -439,6 +439,10 @@ PasswordSafe = (function () {
 		);
 		
 		$("#list").append(passwordEntry);
+		
+		$(".editable").bind('textchange', function() {
+			$(this).addClass("edited");
+		});
 	}	
 	
 	function showServerError() {
