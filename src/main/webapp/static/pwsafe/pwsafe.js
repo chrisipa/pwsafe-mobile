@@ -175,7 +175,7 @@ PasswordSafe = (function () {
 					addPasswordEntry(password);
 				});
 
-				$(".editable").bind('textchange', function() {
+				$(".editable").bind("textchange", function() {
 					$(this).addClass("edited");
 				});
 				
@@ -281,7 +281,7 @@ PasswordSafe = (function () {
 			
 			$.getJSON(Settings.rootUrl + "/password/generate", function(data) {
 				$("#password-" + id).val(data.generatedPassword);
-				$("#password-" + id).trigger("change");
+				$("#password-" + id).trigger("textchange");
 			});	
 		}))
 		.append(
@@ -441,7 +441,7 @@ PasswordSafe = (function () {
 		
 		$("#list").append(passwordEntry);
 		
-		$(".editable").bind('textchange', function() {
+		$(".editable").bind("textchange", function() {
 			$(this).addClass("edited");
 		});
 	}	
