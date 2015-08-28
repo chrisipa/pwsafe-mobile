@@ -317,6 +317,7 @@ PasswordSafe = (function () {
 							success: function(response) {
 								if (response.success) {
 									$("#entry-" + id).children(":first").html(data["title"]);
+									$("#entry-" + id).parent().find(".edited").removeClass("edited");
 									$("#generate").addClass('ui-disabled');
 									$("#showhide").addClass('ui-disabled');
 									$("#create").addClass('ui-disabled');
