@@ -175,9 +175,7 @@ PasswordSafe = (function () {
 					addPasswordEntry(password);
 				});
 
-				$(".editable").bind("textchange", function() {
-					$(this).addClass("edited");
-				});
+				rebindTextChange($(".editable"));
 				
 				$("#list").trigger("create");
 				$("#list").show();
@@ -192,6 +190,12 @@ PasswordSafe = (function () {
 		
 		$.mobile.changePage(searchPage);
 	}	
+	
+	function rebindTextChange($input) {
+		$input.unbind("textchange").bind("textchange", function() {
+			$(this).addClass("edited");
+		});
+	}
 	
 	function addPasswordEntry(password) {
 		
@@ -253,17 +257,19 @@ PasswordSafe = (function () {
 				
 				var id = $(this).attr("data-id");
 				var passwordValueId = "#password-" + id;
-				var passwordValue = $(passwordValueId).val();
-				$(passwordValueId).removeClass("edited");
+				var passwordField = $(passwordValueId);
+				var passwordValue = passwordField.val(); 
+				passwordField.removeClass("edited");
 				
 				if (passwordValue == Settings.passwordDefaultValue) {
 					$.getJSON(Settings.rootUrl + "/passwords/" + id + "/currentValue", function(data) {
-						$(passwordValueId).val(data.currentPassword);
+						passwordField.val(data.currentPassword);
+						rebindTextChange(passwordField);
 					});
 					$(this).html($.i18n.prop("button.hide.label"));
 				}
 				else {
-					$(passwordValueId).val(Settings.passwordDefaultValue);
+					passwordField.val(Settings.passwordDefaultValue);
 					$(this).html($.i18n.prop("button.show.label"));
 				}
 			})
@@ -441,9 +447,7 @@ PasswordSafe = (function () {
 		
 		$("#list").append(passwordEntry);
 		
-		$(".editable").bind("textchange", function() {
-			$(this).addClass("edited");
-		});
+		rebindTextChange($(".editable"));
 	}	
 	
 	function showServerError() {
