@@ -266,15 +266,15 @@ PasswordSafe = (function () {
 				if (passwordValue == Settings.passwordDefaultValue) {
 					$.getJSON(Settings.rootUrl + "/passwords/" + id + "/currentValue", function(data) {
 						passwordField.val(data.currentPassword);
+						rebindTextChange(passwordField);
 					});
 					$(this).html($.i18n.prop("button.hide.label"));
 				}
 				else {
 					passwordField.val(Settings.passwordDefaultValue);
+					rebindTextChange(passwordField);
 					$(this).html($.i18n.prop("button.show.label"));
 				}
-				
-				rebindTextChange(passwordField);
 			})
 		)
 		.append(
