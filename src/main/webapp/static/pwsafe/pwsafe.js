@@ -175,8 +175,6 @@ PasswordSafe = (function () {
 					addPasswordEntry(password);
 				});
 
-				rebindTextChange($(".editable"));
-				
 				$("#list").trigger("create");
 				$("#list").show();
 			});
@@ -200,6 +198,10 @@ PasswordSafe = (function () {
 	function addPasswordEntry(password) {
 		
 		var passwordEntry = $("<div data-role='collapsible'></div>");
+		
+		passwordEntry.on("collapsiblecollapse", function(event, ui) {
+			rebindTextChange($(this).find(".editable"));
+		});
 		
 		if (password.id == "new-entry") {
 			passwordEntry.attr("data-collapsed", "false");
@@ -340,6 +342,8 @@ PasswordSafe = (function () {
 						});
 					})
 			);
+			
+			passwordEntry.trigger("collapsiblecollapse");
 		}
 		else {
 			
@@ -446,8 +450,6 @@ PasswordSafe = (function () {
 		);
 		
 		$("#list").append(passwordEntry);
-		
-		rebindTextChange($(".editable"));
 	}	
 	
 	function showServerError() {
