@@ -1,7 +1,7 @@
 pwsafe-mobile
 =======
 
-[![Build Status](https://papke.it/jenkins/buildStatus/icon?job=cron-x)](https://papke.it/jenkins/job/cron-x/)
+[![Build Status](https://papke.it/jenkins/buildStatus/icon?job=pwsafe-mobile)](https://papke.it/jenkins/job/pwsafe-mobile/)
 
 Overview
 -------------
