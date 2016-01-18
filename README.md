@@ -1,6 +1,8 @@
 pwsafe-mobile
 =======
 
+[![Build Status](https://papke.it/jenkins/buildStatus/icon?job=cron-x)](https://papke.it/jenkins/job/cron-x/)
+
 Overview
 -------------
 This is a alternative web frontend based on JQuery Mobile for the original webpasswordsafe created by Josh Drummond.
