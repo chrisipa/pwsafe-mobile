@@ -26,7 +26,7 @@ Installation
 * Download and extract the war file to web apps folder:
 ```
 cd /opt/tomcat/webapps
-wget https://raw.githubusercontent.com/chrisipa/pwsafe-mobile/master/public/pwsafe-mobile.war
+wget https://papke.it/jenkins/job/pwsafe-mobile/lastStableBuild/de.papke%24pwsafe-mobile/artifact/de.papke/pwsafe-mobile/1.0.7/pwsafe-mobile-1.0.7.war -O pwsafe-mobile.war
 mkdir pwsafe-mobile 
 unzip pwsafe-mobile.war -d pwsafe-mobile 
 rm pwsafe-mobile.war
