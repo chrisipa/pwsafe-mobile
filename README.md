@@ -2,6 +2,7 @@ pwsafe-mobile
 =======
 
 [![Build Status](https://papke.it/jenkins/buildStatus/icon?job=pwsafe-mobile)](https://papke.it/jenkins/job/pwsafe-mobile/)
+[![Code Analysis](https://img.shields.io/badge/code%20analysis-available-blue.svg)](https://papke.it/sonar/overview?id=1)
 
 Overview
 -------------
