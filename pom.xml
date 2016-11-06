@@ -18,6 +18,13 @@
 		<servlet-api.version>2.4</servlet-api.version>
 		<smiley-http-proxy-servlet.version>1.4</smiley-http-proxy-servlet.version>
 		<spring.version>3.2.8.RELEASE</spring.version>
+		<registry>docker.io</registry>
+		<tenant>chrisipa</tenant>
+		<opt.folder>/opt</opt.folder>
+		<catalina.home>${opt.folder}/tomcat</catalina.home>
+		<tomcat.webapps.folder>${catalina.home}/webapps</tomcat.webapps.folder>
+		<docker.data.folder>${opt.folder}/docker/${project.artifactId}</docker.data.folder>
+		<hsqldb.data.folder>/data</hsqldb.data.folder>
 	</properties>
 
 	<dependencies>
@@ -106,6 +113,63 @@
 							<value>${project.build.directory}</value>
 						</systemProperty>
 					</systemProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<verbose>true</verbose>
+					<registry>${registry}</registry>
+					<images>
+						<image>
+							<name>${tenant}/${project.artifactId}</name>
+							<alias>${project.artifactId}</alias>
+							<build>
+								<tags>
+									<tag>${project.version}</tag>
+								</tags>
+								<from>${tenant}/webpasswordsafe:1.4.1</from>
+								<optimise>true</optimise>
+								<assembly>
+									<basedir>/</basedir>
+									<inline>
+										<dependencySets>
+											<dependencySet>
+												<includes>
+													<include>${project.groupId}:${project.artifactId}:${project.packaging}</include>
+												</includes>
+												<outputDirectory>${tomcat.webapps.folder}/${project.artifactId}</outputDirectory>
+												<unpack>true</unpack>
+											</dependencySet>
+										</dependencySets>
+										<fileSets>
+											<fileSet>
+												<directory>${project.basedir}/src/main/resources/docker/ROOT</directory>
+												<outputDirectory>${tomcat.webapps.folder}/ROOT</outputDirectory>
+												<includes>
+													<include>**/*</include>
+												</includes>
+											</fileSet>
+										</fileSets>
+									</inline>
+								</assembly>
+							</build>
+							<run>
+								<namingStrategy>alias</namingStrategy>
+								<volumes>
+									<bind>
+										<volume>${docker.data.folder}:${hsqldb.data.folder}</volume>
+									</bind>
+								</volumes>
+								<ports>
+									<port>8080:8080</port>
+									<port>8443:8443</port>
+								</ports>
+							</run>
+						</image>
+					</images>
 				</configuration>
 			</plugin>
 		</plugins>
