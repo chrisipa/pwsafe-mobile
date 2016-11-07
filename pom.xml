@@ -124,13 +124,13 @@
 					<registry>${registry}</registry>
 					<images>
 						<image>
-							<name>${tenant}/${project.artifactId}</name>
+							<name>${registry}/${tenant}/${project.artifactId}</name>
 							<alias>${project.artifactId}</alias>
 							<build>
 								<tags>
 									<tag>${project.version}</tag>
 								</tags>
-								<from>${tenant}/webpasswordsafe:1.4.1</from>
+								<from>${registry}/${tenant}/webpasswordsafe:1.4.1</from>
 								<optimise>true</optimise>
 								<assembly>
 									<basedir>/</basedir>
