@@ -96,7 +96,7 @@ When you start the password safe container, you can adjust the configuration by 
 
 * Run password safe container in foreground with this command:
   ```
-  docker run --rm -p 8080:8080 -p 8443:8443 chrisipa/webpasswordsafe
+  docker run --rm -p 8080:8080 -p 8443:8443 chrisipa/pwsafe-mobile
   ```
 
 #### Example 2: MySQL server on external host with default port
@@ -107,7 +107,7 @@ When you start the password safe container, you can adjust the configuration by 
 
 3. Run the password safe container with the following command:
   ```
-  docker run --name webpasswordsafe-tomcat -d -p 8080:8080 -p 8443:8443 -e PASSPHRASE=my-passphrase -e DB_HOST=192.168.0.1 -e DB_PASS=my-password chrisipa/webpasswordsafe
+  docker run --name webpasswordsafe-tomcat -d -p 8080:8080 -p 8443:8443 -e PASSPHRASE=my-passphrase -e DB_HOST=192.168.0.1 -e DB_PASS=my-password chrisipa/pwsafe-mobile
   ```
 
 #### Example 3: MySQL server as docker container on the same docker host
@@ -119,7 +119,7 @@ When you start the password safe container, you can adjust the configuration by 
 
 2. Run password safe container by linking to the newly created mysql container:
   ```
-  docker run --name webpasswordsafe-tomcat --link webpasswordsafe-mysql:mysql -d -p 8080:8080 -p 8443:8443 -e PASSPHRASE=my-passphrase chrisipa/webpasswordsafe
+  docker run --name webpasswordsafe-tomcat --link webpasswordsafe-mysql:mysql -d -p 8080:8080 -p 8443:8443 -e PASSPHRASE=my-passphrase chrisipa/pwsafe-mobile
   ```
 
 #### Example 4: Running docker containers with compose
@@ -137,7 +137,7 @@ When you start the password safe container, you can adjust the configuration by 
       - MYSQL_PASSWORD=my-password
 
   tomcat:
-    image: chrisipa/webpasswordsafe
+    image: chrisipa/pwsafe-mobile
     links:
       - mysql:mysql
     ports:
