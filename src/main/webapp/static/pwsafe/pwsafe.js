@@ -250,6 +250,26 @@ PasswordSafe = (function () {
 			.attr("value", password.id == "new-entry" ? "" : Settings.passwordDefaultValue)
 		)
 		.append(
+			$("<a id='copy' data-role='button' data-inline='true'></a>")
+			.html($.i18n.prop("button.copy.label"))
+			.attr("data-id", password.id)
+			.click(function(e) {
+				
+				e.preventDefault();
+				
+				var id = $(this).attr("data-id");
+				
+				$.ajax({
+					url: Settings.rootUrl + "/passwords/" + id + "/currentValue",
+					dataType: 'json',
+					async: false,
+					success: function(data) {
+						copyToClipboard(data.currentPassword);
+					}
+				});
+			})
+		)
+		.append(
 			$("<a id='showhide' data-role='button' data-inline='true'></a>")
 			.html($.i18n.prop("button.show.label"))
 			.attr("data-id", password.id)
@@ -452,6 +472,14 @@ PasswordSafe = (function () {
 		
 		$("#list").append(passwordEntry);
 	}	
+	
+	function copyToClipboard(text) {
+		var $temp = $("<input>");
+		$("body").append($temp);
+		$temp.val(text).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
 	
 	function showServerError() {
 		alert($("<div />").html($.i18n.prop("server.error.message")).text());
